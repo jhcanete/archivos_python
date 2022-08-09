@@ -10,6 +10,7 @@
 # Ejercicios con archivos
 
 import csv
+from webbrowser import get
 
 
 def ej3():
@@ -27,8 +28,16 @@ def ej3():
     # para cumplir con el enunciado del ejercicio
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-    
 
+    archivo = open(archivo, 'r')
+    datos = list(csv.DictReader(archivo))
+    sumatoria = 0
+
+    for k in datos:
+        sumatoria += int (k.get('tornillos'))
+
+    archivo.close ()
+    print('el stock de tornillos es: ', sumatoria)
 
 def ej4():
     print('Ejercicios con archivos CSV 2º')
@@ -47,6 +56,29 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+    archivo = open(archivo, 'r')
+    datos = list(csv.DictReader(archivo))
+    ambientes2 = 0
+    ambientes3 = 0
+
+
+
+    for k in datos:
+        if k.get('ambientes') == '2':
+            ambientes2 += 1
+        elif k.get('ambientes') == '3':
+            ambientes3 += 1
+        elif k.get('ambiente') == None:
+            pass
+
+    archivo.close ()
+    print('la cantidad de 2 ambientes es: ', ambientes2)
+    print('la cantidad de 3 ambientes es: ', ambientes3)
+
+    
+
+
+    
 
 
 if __name__ == '__main__':

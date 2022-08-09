@@ -10,21 +10,26 @@
 # Ejercicios con diccionarios
 
 import csv
+from webbrowser import get
 
 
-def ej1():
+def stock1():
     print('Ejercicios con diccionarios 1º')
     # Crear un diccionario vacio
     # el diccionario vacio debe llamarse "stock"
     
     # stock = ....
+    stock = {}
+
 
     # Luego de crear el diccionario completelo
     # con el siguiente stock:
     # tornillos = 100
     # tuercas = 150
     # arandelas = 300
-
+    stock["tornillos"] = 100
+    stock["tuercas"] = 150
+    stock["arandelas"] = 300
     # Los nombres tornillos, tuercas y arandelas
     # son las claves (keys) del diccionario
     # mientras que las cantidades son los valores (values)
@@ -33,14 +38,15 @@ def ej1():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    print("stock de ferreteria: ", 'tornillos', stock.get("tornillos"), "  ",'tuercas', stock.get("tuercas"), "  ", 'arandelas', stock.get("arandelas"))
 
-def ej2():
+    
     print('Ejercicio con diccionarios 2º')
     # Basado en el ejercicio anterior ej1, utilizaremos el diccionario
     # como una base de datos. Comenzaremos con un diccionario de stock
     # de nuestros productos en cero:
     
-    strock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
+    "stock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}"
 
     # Paso 1:
     # Crear un bucle utilizando while que se ejecute de forma infinita
@@ -67,8 +73,28 @@ def ej2():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    while True:
+        material = None
+        cantidad = None
+        salir = True
+        print('Que producto desea ingresar al stock? para finalizar ingrese FIN:')
+        material = str(input('ingrese material a agregar: '))
+
+        for k, v in stock.items():
+            if k == material:
+                cantidad = int(input('ingrese cantidad a agregar: '))
+                stock[material] += cantidad
+            elif material == 'fin':
+                salir = False
+                break
+        if salir == False:
+            break
+
+    
+    print("stock de ferreteria: ", 'tornillos', stock.get("tornillos"), "  ",'tuercas', stock.get("tuercas"), "  ", 'arandelas', stock.get("arandelas"))
+
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    ej1()
-    ej2()
+    stock1()
+
